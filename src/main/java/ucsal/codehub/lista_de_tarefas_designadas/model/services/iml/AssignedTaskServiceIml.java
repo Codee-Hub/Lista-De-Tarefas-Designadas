@@ -1,6 +1,7 @@
 package ucsal.codehub.lista_de_tarefas_designadas.model.services.iml;
 
 import ucsal.codehub.lista_de_tarefas_designadas.model.entities.AssignedTask;
+import ucsal.codehub.lista_de_tarefas_designadas.model.enums.AssignedTaskStatus;
 import ucsal.codehub.lista_de_tarefas_designadas.model.services.AssignedTaskService;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class AssignedTaskServiceIml implements AssignedTaskService {
 
     @Override
     public void deleteAssignedTaskById(int id) {
-    tasks = tasks.stream().filter(task -> task.getId() == id).collect(Collectors.toList());
+    tasks = tasks.stream().filter(task -> task.getId() != id).collect(Collectors.toList());
     }
 
     @Override
@@ -45,5 +46,10 @@ public class AssignedTaskServiceIml implements AssignedTaskService {
     @Override
     public List<AssignedTask> getAssignedTasksByPersonId(int personId) {
         return tasks.stream().filter(task -> task.getPerson().getId() == personId).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AssignedTask> getPedingAssignedTasks() {
+        return tasks.stream().filter(task -> task.getStatus() == AssignedTaskStatus.PENDING).collect(Collectors.toList());
     }
 }
