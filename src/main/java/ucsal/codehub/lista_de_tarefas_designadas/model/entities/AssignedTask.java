@@ -8,7 +8,7 @@ public class AssignedTask {
     protected String name;
     protected Integer id;
     protected Person person;
-    protected AssignedTaskStatus status = AssignedTaskStatus.PENDING;
+    protected AssignedTaskStatus status;
 
     public AssignedTask() {}
 
@@ -16,12 +16,14 @@ public class AssignedTask {
         this.name = name;
         this.person = person;
         this.id = getNewId();
+        this.status = AssignedTaskStatus.PENDING;
     }
 
     public AssignedTask(String name, Person person , Integer id) {
         this.name = name;
         this.person = person;
         this.id = id;
+        this.status = AssignedTaskStatus.PENDING;
     }
 
     private Integer getNewId(){
@@ -50,6 +52,14 @@ public class AssignedTask {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AssignedTaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AssignedTaskStatus status) {
+        this.status = status;
     }
 
     @Override

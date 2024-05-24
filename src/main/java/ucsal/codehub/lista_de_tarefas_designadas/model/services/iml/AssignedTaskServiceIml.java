@@ -52,4 +52,9 @@ public class AssignedTaskServiceIml implements AssignedTaskService {
     public List<AssignedTask> getPedingAssignedTasks() {
         return tasks.stream().filter(task -> task.getStatus() == AssignedTaskStatus.PENDING).collect(Collectors.toList());
     }
+
+    @Override
+    public void concludeAssignedTask(int id) {
+        tasks.stream().filter(task -> task.getId() == id).findFirst().ifPresent(task -> task.setStatus(AssignedTaskStatus.CONCLUDED));
+    }
 }

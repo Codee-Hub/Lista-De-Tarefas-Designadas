@@ -13,4 +13,5 @@ public interface AssignedTaskService {
     List<AssignedTask> getAllAssignedTasks();
     List<AssignedTask> getAssignedTasksByPersonId(int personId);
     List<AssignedTask> getPedingAssignedTasks();
+    void concludeAssignedTask(int id);
 }
