@@ -1,11 +1,14 @@
 package ucsal.codehub.lista_de_tarefas_designadas.model.entities;
 
+import ucsal.codehub.lista_de_tarefas_designadas.model.enums.AssignedTaskStatus;
+
 public class AssignedTask {
-    private Integer idCount = 0;
+    private static Integer idCount = 0;
 
     protected String name;
     protected Integer id;
     protected Person person;
+    protected AssignedTaskStatus status = AssignedTaskStatus.PENDING;
 
     public AssignedTask() {}
 
@@ -22,7 +25,7 @@ public class AssignedTask {
     }
 
     private Integer getNewId(){
-        return ++idCount;
+        return idCount++;
     }
 
     public Person getPerson() {
@@ -47,5 +50,15 @@ public class AssignedTask {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "AssignedTask{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", person=" + person +
+                ", status=" + status +
+                '}';
     }
 }

@@ -1,7 +1,7 @@
 package ucsal.codehub.lista_de_tarefas_designadas.model.entities;
 
 public class Person {
-    private Integer idCount = 0;
+    private static Integer idCount = 0;
 
     protected String name;
     protected Integer id;
@@ -21,7 +21,7 @@ public class Person {
     }
 
     private Integer getNewId(){
-        return ++idCount;
+        return idCount++;
     }
 
     public Integer getId() {
@@ -38,5 +38,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
