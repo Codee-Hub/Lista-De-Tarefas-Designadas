@@ -29,8 +29,12 @@ public class AssignedTaskServiceIml implements AssignedTaskService {
 
     @Override
     public void updateAssignedTask(AssignedTask assignedTask) {
-    deleteAssignedTaskById(assignedTask.getId());
-    addAssignedTask(assignedTask);
+        tasks.stream().filter(task -> task.getId() == assignedTask.getId()).findFirst().ifPresent(task ->  updateTask(task, assignedTask));
+    }
+
+    private void updateTask(AssignedTask task, AssignedTask newTask) {
+        task.setName(newTask.getName());
+        task.setPerson(newTask.getPerson());
     }
 
     @Override
