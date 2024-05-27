@@ -14,5 +14,4 @@ public interface AssignedTaskService<T extends AssignedTask> {
     List<T> getAssignedTasksByPersonId(int personId);
     List<T> getPedingAssignedTasks();
     void concludeAssignedTask(int id);
-    void updateTask(T task, T newTask);
 }

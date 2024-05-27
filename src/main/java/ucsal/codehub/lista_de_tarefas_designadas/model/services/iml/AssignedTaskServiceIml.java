@@ -49,7 +49,7 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
         }
     }
 
-    public void updateTask(AssignedTask task, AssignedTask newTask) {
+    private void updateTask(AssignedTask task, AssignedTask newTask) {
         task.setName(newTask.getName());
         task.setPerson(newTask.getPerson());
     }

@@ -49,7 +49,7 @@ public class PersonServiceIml implements PersonService<Person> {
         }
     }
 
-    public void updateData(Person person, Person newPerson){
+    private void updateData(Person person, Person newPerson){
         person.setName(newPerson.getName());
     }
 
