@@ -30,11 +30,9 @@ public class PersonServiceIml implements PersonService<Person> {
     @Override
     public void removePersonById(int id) {
         try {
-            if(people.stream().filter(person -> person.getId() == id).findFirst().orElse(null) != null){
-                people = people.stream().filter(person -> person.getId() != id).collect(Collectors.toList());
-            }else {
-                throw new PersonNotFound("Person not found");
-            }
+            people.remove(people.stream().filter(person -> person.getId() == id).findFirst().orElseThrow(() -> new PersonNotFound("Person not found")));
+        } catch (PersonNotFound e) {
+            e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -43,11 +41,9 @@ public class PersonServiceIml implements PersonService<Person> {
     @Override
     public void updatePerson(Person newPerson) {
         try {
-            if(people.stream().filter(person -> person.getId() == newPerson.getId()).findFirst().orElse(null) != null){
-                people.stream().filter(person -> person.getId() == newPerson.getId()).findFirst().ifPresent(person -> updateData(person, newPerson));
-            }else {
-                throw new PersonNotFound("Person not found");
-            }
+            people.stream().filter(person -> person.getId() == newPerson.getId()).findFirst().ifPresentOrElse(person -> updateData(person, newPerson), () -> { throw new PersonNotFound("Person not found"); });
+        } catch (PersonNotFound e) {
+            e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -60,11 +56,10 @@ public class PersonServiceIml implements PersonService<Person> {
     @Override
     public Person getPersonById(int id) {
         try {
-            if(people.stream().filter(person -> person.getId() == id).findFirst().orElse(null) != null){
-                return people.stream().filter(person -> person.getId() == id).findFirst().orElse(null);
-            }else {
-                throw new PersonNotFound("Person not found");
-            }
+           return people.stream().filter(person -> person.getId() == id).findFirst().orElseThrow(() -> new PersonNotFound("Person not found"));
+        } catch (PersonNotFound e) {
+            e.printStackTrace();
+            return null;
         } catch(Exception e) {
             e.printStackTrace();
             return null;
@@ -74,6 +69,7 @@ public class PersonServiceIml implements PersonService<Person> {
     @Override
     public List<Person> getPersons() {
         try {
+            if(people.isEmpty()) throw new PersonNotFound("Person not found");
             return people;
         } catch(Exception e) {
             e.printStackTrace();

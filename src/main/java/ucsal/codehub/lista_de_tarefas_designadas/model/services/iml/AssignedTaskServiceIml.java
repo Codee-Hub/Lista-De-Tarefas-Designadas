@@ -30,11 +30,9 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     @Override
     public void deleteAssignedTaskById(int id) {
         try {
-            if(tasks.stream().filter(task -> task.getId() == id).findFirst().orElse(null) != null) {
-                tasks = tasks.stream().filter(task -> task.getId() != id).collect(Collectors.toList());
-            } else {
-                throw new TaskNotFound("Task not found");
-            }
+            tasks.remove(tasks.stream().filter(task -> task.getId() == id).findFirst().orElseThrow(() -> new TaskNotFound("Task not found")));
+        } catch (TaskNotFound e){
+            e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -43,11 +41,9 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     @Override
     public void updateAssignedTask(AssignedTask assignedTask) {
         try {
-            if(tasks.stream().filter(task -> task.getId() == assignedTask.getId()).findFirst().orElse(null) != null) {
-                tasks.stream().filter(task -> task.getId() == assignedTask.getId()).findFirst().ifPresent(task ->  updateTask(task, assignedTask));
-            } else {
-                throw new TaskNotFound("Task not found");
-            }
+            tasks.stream().filter(task -> task.getId() == assignedTask.getId()).findFirst().ifPresentOrElse(task -> updateTask(task,assignedTask), () -> {throw new TaskNotFound("Task not found");});
+        } catch (TaskNotFound e){
+            e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -61,11 +57,10 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     @Override
     public AssignedTask getAssignedTaskById(int id) {
         try {
-            if(tasks.stream().filter(task -> task.getId() == id).findFirst().orElse(null) != null) {
-                return tasks.stream().filter(task -> task.getId() == id).findFirst().orElse(null);
-            } else {
-                throw new TaskNotFound("Task not found");
-            }
+            return tasks.stream().filter(task -> task.getId() == id).findFirst().orElseThrow(() -> new TaskNotFound("Task not found"));
+        } catch (TaskNotFound e){
+            e.printStackTrace();
+            return null;
         } catch(Exception e) {
             e.printStackTrace();
             return null;
@@ -75,8 +70,11 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     @Override
     public List<AssignedTask> getAllAssignedTasks() {
         try {
+            if(tasks.isEmpty()) throw new TaskNotFound("Task not found");
             return tasks;
-
+        } catch (TaskNotFound e){
+            e.printStackTrace();
+            return null;
         } catch(Exception e) {
             e.printStackTrace();
             return null;
@@ -97,7 +95,6 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     public List<AssignedTask> getPedingAssignedTasks() {
         try {
             return tasks.stream().filter(task -> task.getStatus() == AssignedTaskStatus.PENDING).collect(Collectors.toList());
-
         } catch(Exception e) {
             e.printStackTrace();
             return null;
@@ -107,7 +104,9 @@ public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask>
     @Override
     public void concludeAssignedTask(int id) {
         try {
-            tasks.stream().filter(task -> task.getId() == id).findFirst().ifPresent(task -> task.setStatus(AssignedTaskStatus.CONCLUDED));
+            tasks.stream().filter(task -> task.getId() == id).findFirst().ifPresentOrElse(task -> task.setStatus(AssignedTaskStatus.CONCLUDED), () -> {throw new TaskNotFound("Task not found");});
+        } catch (TaskNotFound e){
+            e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
