@@ -10,4 +10,5 @@ public interface PersonService {
     void updatePerson(Person person);
     Person getPersonById(int id);
     List<Person> getPersons();
+    void updateData(Person person, Person newPerson);
 }
