@@ -1,4 +1,4 @@
-# Workshop-JavaFX-JDBC
+# Lista-De-Tarefas-Designadas
 
 This project is a simple Java application for managing tasks and people. Each task is assigned to a person and can have a status of pending or completed. The project uses entities to represent tasks and people, and services to manage these entities.
 
@@ -11,7 +11,7 @@ This project is a simple Java application for managing tasks and people. Each ta
 
 ## Getting Started
 
-### Prerequisites
+### Pre-requisites
 
 - Java Development Kit (JDK)
 
@@ -21,14 +21,9 @@ This project is a simple Java application for managing tasks and people. Each ta
 
 ## Screenshots
 
-### Seller List Screen
-![Seller List](sellers.png)
+### Class Diagram
+![Class Diagram](diagrama.png)
 
-### Seller Form Screen
-![Seller Form](SellersForm.png)
-
-### Department List Screen
-![Department list](departments.png)
 
 ## Technologies Used
 
@@ -40,5 +35,5 @@ This project is a simple Java application for managing tasks and people. Each ta
 
 ## License
 
-This project is licensed under the [Licença MIT](https://github.com/CauZy-Dev/workshop-javafx-jdbc/blob/main/LICENSE).
+This project is licensed under the [Licença MIT](https://github.com/Codee-Hub/Lista-De-Tarefas-Designadas/blob/main/LICENSE).
 
