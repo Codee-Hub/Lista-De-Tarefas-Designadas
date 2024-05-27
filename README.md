@@ -24,6 +24,24 @@ This project is a simple Java application for managing tasks and people. Each ta
 ### Class Diagram
 ![Class Diagram](src/img/diagrama.png)
 
+### AssignedTask Entity
+![entity](src/img/AssignedTask.png)
+
+### Status Enum
+![enum](src/img/enumStatus.png)
+
+### TaskService Terminal
+![terminal](src/img/terminal.png)
+
+### AssignedTaskServiceiml Service
+![service](src/img/servicetask.png)
+
+### Factory
+![Factory](src/img/facttory.png)
+
+### exceptions
+![exceptions](src/img/exceptions.png)
+
 
 ## Technologies Used
 
@@ -31,7 +49,11 @@ This project is a simple Java application for managing tasks and people. Each ta
 
 ## Contributors
 
-- [CauZy-Dev](https://github.com/cauzy-dev)
+- [CauZy-Dev](https://github.com/cauzy-dev) Cauã Goes
+- [Yan-Pi](https://github.com/yan-pi) Yan Fernandes
+- [Zadriw](https://github.com/ZadriW) Adriano Abreu
+- [CauZy-Dev](https://github.com/cauzy-dev) Guilherme Andrade
+- [CauZy-Dev](https://github.com/cauzy-dev) Kailan Souza
 
 ## License
 
