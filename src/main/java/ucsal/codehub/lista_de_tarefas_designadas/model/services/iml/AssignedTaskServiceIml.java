@@ -8,7 +8,7 @@ import ucsal.codehub.lista_de_tarefas_designadas.model.services.exceptions.TaskN
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AssignedTaskServiceIml implements AssignedTaskService {
+public class AssignedTaskServiceIml implements AssignedTaskService<AssignedTask> {
 
     List<AssignedTask> tasks;
 

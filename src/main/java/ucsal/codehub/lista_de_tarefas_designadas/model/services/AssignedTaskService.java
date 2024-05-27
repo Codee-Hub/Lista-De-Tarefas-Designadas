@@ -4,15 +4,15 @@ import ucsal.codehub.lista_de_tarefas_designadas.model.entities.AssignedTask;
 
 import java.util.List;
 
-public interface AssignedTaskService {
+public interface AssignedTaskService<T extends AssignedTask> {
 
-    void addAssignedTask(AssignedTask assignedTask);
+    void addAssignedTask(T assignedTask);
     void deleteAssignedTaskById(int id);
-    void updateAssignedTask(AssignedTask assignedTask);
-    AssignedTask getAssignedTaskById(int id);
-    List<AssignedTask> getAllAssignedTasks();
-    List<AssignedTask> getAssignedTasksByPersonId(int personId);
-    List<AssignedTask> getPedingAssignedTasks();
+    void updateAssignedTask(T assignedTask);
+    T getAssignedTaskById(int id);
+    List<T> getAllAssignedTasks();
+    List<T> getAssignedTasksByPersonId(int personId);
+    List<T> getPedingAssignedTasks();
     void concludeAssignedTask(int id);
-    void updateTask(AssignedTask task, AssignedTask newTask);
+    void updateTask(T task, T newTask);
 }

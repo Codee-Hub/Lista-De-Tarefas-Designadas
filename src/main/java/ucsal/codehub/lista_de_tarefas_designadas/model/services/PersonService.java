@@ -4,11 +4,11 @@ import ucsal.codehub.lista_de_tarefas_designadas.model.entities.Person;
 
 import java.util.List;
 
-public interface PersonService {
-    void addPerson(Person person);
+public interface PersonService <T extends Person> {
+    void addPerson(T person);
     void removePersonById(int id);
-    void updatePerson(Person person);
-    Person getPersonById(int id);
-    List<Person> getPersons();
-    void updateData(Person person, Person newPerson);
+    void updatePerson(T person);
+    T getPersonById(int id);
+    List<T> getPersons();
+    void updateData(T person, T newPerson);
 }

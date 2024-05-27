@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PersonServiceIml implements PersonService {
+public class PersonServiceIml implements PersonService<Person> {
 
     List<Person> people;
 
