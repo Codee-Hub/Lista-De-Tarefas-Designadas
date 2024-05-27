@@ -2,6 +2,8 @@ package ucsal.codehub.lista_de_tarefas_designadas.model.entities;
 
 import ucsal.codehub.lista_de_tarefas_designadas.model.enums.AssignedTaskStatus;
 
+import java.util.Objects;
+
 public class AssignedTask <T extends Person>  {
     private static Integer idCount = 0;
 
@@ -70,5 +72,18 @@ public class AssignedTask <T extends Person>  {
                 ", person=" + person +
                 ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AssignedTask<?> that = (AssignedTask<?>) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
