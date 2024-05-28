@@ -52,8 +52,8 @@ This project is a simple Java application for managing tasks and people. Each ta
 - [CauZy-Dev](https://github.com/cauzy-dev) Cauã Goes
 - [Yan-Pi](https://github.com/yan-pi) Yan Fernandes
 - [Zadriw](https://github.com/ZadriW) Adriano Abreu
-- [CauZy-Dev](https://github.com/cauzy-dev) Guilherme Andrade
-- [CauZy-Dev](https://github.com/cauzy-dev) Kailan Souza
+- [GuiLacerds](https://github.com/Guilacerds) Guilherme Andrade
+- [KailanDias](https://github.com/KailanDias) Kailan Souza
 
 ## License
 
